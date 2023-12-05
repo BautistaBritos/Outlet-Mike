@@ -1,36 +1,45 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  where,
+  query,
+} from "firebase/firestore";
 
-import { products } from "../data/products";
 import { ItemList } from "./ItemList";
+import { Carrousel } from "./Carrousel";
 
-export const ItemListContainer = (props) => {
+export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
   const { id } = useParams();
 
   useEffect(() => {
-    const myPromise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(products);
-      }, 2000);
-    });
+    const db = getFirestore();
 
-    myPromise.then((response) => {
-        if(!id) {
-            setItems(response)
-        }else {
-            const filterByCategoty = response.filter(item => item.category === id);
-            setItems(filterByCategoty);
-        }
+    const refCollection = !id
+      ? collection(db, "items")
+      : query(collection(db, "items"), where("categoryId", "==", id));
+
+    getDocs(refCollection).then((snapshot) => {
+      if (snapshot.size === 0) console.log("hola");
+      else
+        setItems(
+          snapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          })
+        );
     });
   }, [id]);
 
   return (
     <div>
       <h1 className="titulo">¡Bienvenidos al mejor Outlet del Pais!</h1>
-      {items ? <ItemList items={items}/> : <>Loading...</>}
+      <Carrousel />
+      <h2 className="tituloSecuandario">¡Productos!</h2>
+      {items ? <ItemList items={items} /> : <>Loading...</>}
     </div>
-    
   );
 };

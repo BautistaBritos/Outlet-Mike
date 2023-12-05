@@ -22,29 +22,103 @@
 
 .zapatillas{
     display: flex;
+    justify-content: center;
+    margin-bottom: 70px;
 }
 
-.papa{
-    margin-left: 80px;
+.cardZapatilla{
+    margin: 0 50px;
+}
+
+.cartaDetail{
+    width: 470px;
+    margin-bottom: 70px;
+}
+
+.centrar{
+    text-align: center;
 }
 
 .tituloDetalle{
     text-align: center;
-    margin-top: 40px;
     text-decoration:underline;
-}
-
-.cartaDetail{
-    margin-top: 100px;
-    margin-left: 200px;
+    margin-bottom: 25px;
+    padding-top: 30px;
 }
 
 .divDetail{
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 
-.parrafoDetail{
-    width: 500px;
-    margin-left: 200px;
+.papaCarrusel{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.carrusel{
+    width: 1200px;
+}
+
+.tituloSecuandario{
+    text-align: center;
+    text-decoration:underline;
+    margin-bottom: 60px;
+}
+
+.marcoCounter{
+    background-color: white;
+    padding:0 17px;
+    margin: 0 20px;
+}
+
+.agragarCarrito{
+    margin-left: 155px;
+    padding-bottom: 30px;
+}
+
+.counter{
+    display: flex;
+    margin-left: 170px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.tamanoSignos{
+    font-size: 20px;
+    border: 1px solid black;
+    padding:0 5px;
+}
+
+.cuerpoDetail{
+    background-image: url(https://img.freepik.com/vector-gratis/fondo-onda-blanca-suave_52683-55288.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701561600&semt=ais);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.spanCart{
+    color: black;
+    font-size: 20px;
+}
+
+.h1carro{
+    margin: 25px 0;
+}
+
+.borrar{ 
+    margin: 70px 0;
+}
+
+.formulario{
+    margin: 50px 0;
+    margin-right: 500px;
+}
+
+.carritoVacio{
+    margin: 65px;
+}
+
+.tablaCart{
+    margin-right: 400px;
 }

@@ -10,7 +10,7 @@ export const NavBar = () => {
     <header>
       <Navbar bg="primary" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             <NavLink to="/" className="navbar">Home</NavLink>
           </Navbar.Brand>
           <Nav className="me-auto">

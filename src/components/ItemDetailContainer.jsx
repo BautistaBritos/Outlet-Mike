@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getFirestore, getDoc, doc} from "firebase/firestore";
 
-import { products } from "../data/products";
 import { ItemDetail } from "./ItemDetail";
 
 
@@ -11,20 +11,17 @@ export const ItemDetailContainer = (  ) => {
   const { id } = useParams();
 
   useEffect(() => {
-    const myPromise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(products);
-      }, 2000);
-    });
+    const db = getFirestore();
 
-    myPromise.then((response) => {
-      const findById = response.find((item) => item.id === Number(id));
-      setItem(findById);
-    });
+    const refDoc = doc(db, "items", id);
+
+    getDoc(refDoc).then((snapshot) => {
+      setItem({id: snapshot.id, ...snapshot.data()});
+    })
   }, [id]);
 
   return (
-    <div>
+    <div className="cuerpoDetail">
       {item ? <ItemDetail item={item} /> : <>Loading...</>}
     </div>
   );
